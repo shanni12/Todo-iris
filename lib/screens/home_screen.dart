@@ -7,30 +7,32 @@ import '../todocard.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('To-do-lists')),
-        drawer: MainDrawer(),
-        body:
-       BlocBuilder(
-              bloc: BlocProvider.of<TodoBloc>(context),
-              builder: (BuildContext context, TodoState state) {
-               return  Container(
-                 height:800,
-                 child: state.todolists.length>0?ListView.builder(
-                      itemBuilder: (context, index) {
-                        return ToDoCard(state.todolists[index]);
-                      },
-                      itemCount: state.todolists.length):Container(child: Center(child: Text('Be Yourself Everyone Else is Already Taken'))),
-               );
-              }),
-        floatingActionButton: 
-                  
-                   FloatingActionButton(
-          onPressed: () {Navigator.of(context).pushNamed('/newtodo');},
-          backgroundColor: Theme.of(context).primaryColor,
-          child: Icon(Icons.add),
-      ),
-        
-        );
+    return SafeArea(
+          child: Scaffold(
+          appBar: AppBar(title: Text('To-do-lists')),
+          drawer: MainDrawer(),
+          body:
+         BlocBuilder(
+                bloc: BlocProvider.of<TodoBloc>(context),
+                builder: (BuildContext context, TodoState state) {
+                 return  Container(
+                   height:800,
+                   child: state.todolists.length>0?ListView.builder(
+                        itemBuilder: (context, index) {
+                          return ToDoCard(state.todolists[index]);
+                        },
+                        itemCount: state.todolists.length):Container(child: Center(child: Text('Be Yourself Everyone Else is Already Taken'))),
+                 );
+                }),
+          floatingActionButton: 
+                    
+                     FloatingActionButton(
+            onPressed: () {Navigator.of(context).pushNamed('/newtodo');},
+            backgroundColor: Theme.of(context).primaryColor,
+            child: Icon(Icons.add,color: Colors.white,),
+        ),
+          
+          ),
+    );
   }
 }

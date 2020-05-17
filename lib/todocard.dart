@@ -88,7 +88,7 @@ class _ToDoCardState extends State<ToDoCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(widget.todoObject.title,style:TextStyle(fontSize:20)),
-                      Text(DateFormat.MMMd().format(widget.todoObject.date),
+                      Text(DateFormat.yMMMd().format(widget.todoObject.date),
                           style: TextStyle(fontWeight: FontWeight.w300))
                     ],
                   ),

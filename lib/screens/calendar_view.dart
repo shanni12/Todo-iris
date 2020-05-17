@@ -27,61 +27,65 @@ class CalendarViewState extends State<CalendarView> {
     print(selected_date);
     final todoBloc=BlocProvider.of<TodoBloc>(context);
     print(todoBloc.getall(selected_date).length);
-    return BlocBuilder(bloc:todoBloc,builder: (BuildContext context,TodoState state) { return Scaffold(
-      appBar: AppBar(title: Text('Todo!')),
-      drawer: MainDrawer(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TableCalendar(initialCalendarFormat:CalendarFormat.week,calendarStyle: CalendarStyle(selectedColor:Colors.purple,todayStyle:TextStyle(fontSize:18.0,fontWeight:FontWeight.bold)),
-              calendarController: controller,headerStyle: HeaderStyle(formatButtonShowsNext:false),onDaySelected: (date,events) {
-                setState(() {selected_date=date;
-                complete=false;});
-              },),
-              todoBloc.getall(selected_date).length>0?Column( mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Row( mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Pending tasks'),
-                      Switch.adaptive(value:complete,onChanged:(val) {
-                      setState(() {
-                          complete=val;
-                      });
-                    }),
-                    Text('Completed Tasks')
-                    ],
-                  ),
-                
-             
-              
-            !complete?(todoBloc.getincomplete(selected_date).length>0?(Container(height:500,
-              child: ListView.builder(itemBuilder: (context,index) {return ToDoCard(todoBloc.getincomplete(selected_date)[index]);},
-              itemCount:todoBloc.getincomplete(selected_date).length ,),
-             )):Column(mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
-                 
-               ],
-             )):(todoBloc.getcompleted(selected_date).length>0? Container(height:500,
-              child: ListView.builder(itemBuilder: (context,index) {return ToDoCard(todoBloc.getcompleted(selected_date)[index]);},
-              itemCount:todoBloc.getcompleted(selected_date).length ,)):Column(
-               children: [
-                 Text('No Completed Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
-                 
-               ])
-             ),]
-        ): 
-                  Container(child: Center(child: Text('No Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)))),
-                  ],
-                
-        ),
-          
-      
-    ),floatingActionButton: 
+    return BlocBuilder(bloc:todoBloc,builder: (BuildContext context,TodoState state) { return SafeArea(
+          child: Scaffold(
+        appBar: AppBar(title: Text('Todo!')),
+        drawer: MainDrawer(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              TableCalendar(initialCalendarFormat:CalendarFormat.week,calendarStyle: CalendarStyle(selectedColor:Theme.of(context).primaryColor,todayStyle:TextStyle(fontSize:18.0,fontWeight:FontWeight.bold)),
+                calendarController: controller,headerStyle: HeaderStyle(formatButtonShowsNext:false),onDaySelected: (date,events) {
+                  setState(() {selected_date=date;
+                  complete=false;});
+                },),
+                todoBloc.getall(selected_date).length>0?Column( mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row( mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Pending tasks'),
+                        Switch.adaptive(value:complete,onChanged:(val) {
+                        setState(() {
+                            complete=val;
+                        });
+                      }),
+                      Text('Completed Tasks')
+                      ],
+                    ),
                   
-                   FloatingActionButton(
-          onPressed: () {Navigator.of(context).pushNamed('/newtodo');},
-          backgroundColor: Theme.of(context).primaryColor,
-          child: Icon(Icons.add),));});
+               
+                
+              !complete?(todoBloc.getincomplete(selected_date).length>0?SingleChildScrollView(
+                            child: (Container(height:500,
+                  child: ListView.builder(itemBuilder: (context,index) {return ToDoCard(todoBloc.getincomplete(selected_date)[index]);},
+                  itemCount:todoBloc.getincomplete(selected_date).length ,),
+                 )),
+              ):Column(mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
+                   
+                 ],
+               )):(todoBloc.getcompleted(selected_date).length>0? Container(height:500,
+                child: ListView.builder(itemBuilder: (context,index) {return ToDoCard(todoBloc.getcompleted(selected_date)[index]);},
+                itemCount:todoBloc.getcompleted(selected_date).length ,)):Column(
+                 children: [
+                   Text('No Completed Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
+                   
+                 ])
+               ),]
+          ): 
+                    Container(child: Center(child: Text('No Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)))),
+                    ],
+                  
+          ),
+            
+        
+      ),floatingActionButton: 
+                    
+                     FloatingActionButton(
+            onPressed: () {Navigator.of(context).pushNamed('/newtodo');},
+            backgroundColor: Theme.of(context).primaryColor,
+            child: Icon(Icons.add,color:Colors.white),)),
+    );});
   }
 }

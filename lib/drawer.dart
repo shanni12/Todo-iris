@@ -43,7 +43,8 @@ class MainDrawer extends StatelessWidget {
 
           buildListTile(Icons.done_all,'Completed',() {Navigator.of(context).pushReplacementNamed('/completed');}),
           buildListTile(Icons.work,'Incomplete',() {Navigator.of(context).pushReplacementNamed('/incomplete');}),
-          buildListTile(Icons.calendar_today,'Calendar-View',() {Navigator.of(context).pushReplacementNamed('/calendar_view');})
+          buildListTile(Icons.calendar_today,'Calendar-View',() {Navigator.of(context).pushReplacementNamed('/calendar_view');}),
+          buildListTile(Icons.help,'Guide',() {Navigator.of(context).pushReplacementNamed('/about_screen');})
 
         ],
       ),

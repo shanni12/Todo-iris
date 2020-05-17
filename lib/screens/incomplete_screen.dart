@@ -9,20 +9,22 @@ class InCompleteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final todoBloc=BlocProvider.of<TodoBloc>(context);
-    return Scaffold(
-        appBar: AppBar(title: Text('In Complete Tasks')),
-        drawer: MainDrawer(),
-        body:
-       BlocBuilder(
-              bloc:todoBloc ,
-              builder: (BuildContext context, TodoState state) {
-               return todoBloc.incomplete().length>0? ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ToDoCard(todoBloc.incomplete()[index]);
-                    },
-                    itemCount: todoBloc.incomplete().length):Container(child: Center(child: Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold))));
-              }),
-       
-        );
+    return SafeArea(
+          child: Scaffold(
+          appBar: AppBar(title: Text('In Complete Tasks')),
+          drawer: MainDrawer(),
+          body:
+         BlocBuilder(
+                bloc:todoBloc ,
+                builder: (BuildContext context, TodoState state) {
+                 return todoBloc.incomplete().length>0? ListView.builder(
+                      itemBuilder: (context, index) {
+                        return ToDoCard(todoBloc.incomplete()[index]);
+                      },
+                      itemCount: todoBloc.incomplete().length):Container(child: Center(child: Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold))));
+                }),
+         
+          ),
+    );
   }
 }

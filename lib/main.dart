@@ -1,6 +1,7 @@
 import 'package:ToDo_bloc/bloc/todo_bloc.dart';
 import 'package:ToDo_bloc/models/todo.dart';
 import 'package:ToDo_bloc/route_generator.dart';
+import 'package:ToDo_bloc/screens/about.dart';
 import 'package:ToDo_bloc/screens/calendar_view.dart';
 import 'package:ToDo_bloc/screens/complete_screen.dart';
 import 'package:ToDo_bloc/screens/incomplete_screen.dart';
@@ -40,11 +41,12 @@ class _MyAppState extends State<MyApp> {
             primarySwatch: Colors.purple,
             
           ),
+          darkTheme: ThemeData(brightness:Brightness.dark),
           initialRoute: '/calendar_view',
           routes:{
             '/calendar_view':(ctx)=>CalendarView(),
             '/': (ctx)=>HomeScreen(),NewToDo.routeName:(ctx)=>NewToDo(),ToDoView.routeName:(ctx)=>ToDoView(),CompleteScreen.routeName:(ctx)=>CompleteScreen(),
-            InCompleteScreen.routeName:(ctx)=>InCompleteScreen(),
+            InCompleteScreen.routeName:(ctx)=>InCompleteScreen(),'/about_screen': (ctx)=>About()
           },
           onGenerateRoute:RouteGenerator.generateRoute ,
         ),

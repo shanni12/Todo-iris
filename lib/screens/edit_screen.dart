@@ -53,60 +53,62 @@ class _EditToDoState extends State<EditToDo> {
     descriptionController.text=todoObject.description;
     _selectedDate=todoObject.date;
     }
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('New ToDo'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: titleController,
-              decoration: InputDecoration(
-                labelText: 'Title',
-              ),
-            ),
-            TextField(
-              controller: descriptionController,
-              keyboardType: TextInputType.multiline,
-              maxLines: 4,
-              minLines: 1,
-              decoration: InputDecoration(
-                labelText: 'Description',
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  _selectedDate == null
-                      ? 'No date chosen'
-                      : 'Date Chosen: ' +
-                          DateFormat.yMMMd().format(_selectedDate),
+    return SafeArea(
+          child: Scaffold(
+        appBar: AppBar(
+          title: Text('New ToDo'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: titleController,
+                decoration: InputDecoration(
+                  labelText: 'Title',
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 8),
-                  color: Colors.blue,
-                  child: FlatButton(
-                    child: Text(
-                      'Choose Date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: _presentDatePicker,
+              ),
+              TextField(
+                controller: descriptionController,
+                keyboardType: TextInputType.multiline,
+                maxLines: 4,
+                minLines: 1,
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    _selectedDate == null
+                        ? 'No date chosen'
+                        : 'Finish By: ' +
+                            DateFormat.yMMMd().format(_selectedDate),
                   ),
-                ),
-              ],
-            ),
-            Container(
-                margin: EdgeInsets.only(top: 8),
-                width: double.infinity,
-                color: Colors.blue,
-                child:
-                    FlatButton(onPressed: _submitToDo, child: Text('submit'))),
-          ],
+                  Container(
+                    margin: EdgeInsets.only(top: 8),
+                    color: Theme.of(context).primaryColor,
+                    child: FlatButton(
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _presentDatePicker,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 8),
+                  width: double.infinity,
+                  color: Theme.of(context).primaryColor,
+                  child:
+                      FlatButton(onPressed: _submitToDo, child: Text('submit'))),
+            ],
+          ),
         ),
       ),
     );
