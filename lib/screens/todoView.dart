@@ -45,17 +45,26 @@ class ToDoView extends StatelessWidget {
     );
   }
     
-    return Scaffold(
-        appBar: AppBar(title: Text('NewPage')),
+    return BlocBuilder(bloc:BlocProvider.of<TodoBloc>(context),builder:(BuildContext context,TodoState state) {return Scaffold(
+        appBar:  AppBar(title: Text(todoObject.title,style:TextStyle(fontSize:25)),),
         body: Center(
-          child:BlocBuilder(bloc:BlocProvider.of<TodoBloc>(context),builder:(BuildContext context,TodoState state) {return Column(
+          child:Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
                Column(children: [
-                Text(todoObject.title),
-                Text(DateFormat.MMMd().format(todoObject.date),
-                    style: TextStyle(fontWeight: FontWeight.w300)),
-                Text(todoObject.description)
+                SizedBox(height: 10,),
+                Row(mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(DateFormat.yMMMd().format(todoObject.date),
+                        style: TextStyle(fontWeight: FontWeight.w300)),
+                        SizedBox(width:3)
+                  ],
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(todoObject.description,style:TextStyle(fontSize:20)),
+                  ],
+                )
               ]),
               Container(
                   color: Colors.purpleAccent,
@@ -91,9 +100,9 @@ class ToDoView extends StatelessWidget {
                   },
                 ),
                     ],
-                  ))]);
+                  ))])));
             
-          }
-        )));
+          });
+        
   }
 }

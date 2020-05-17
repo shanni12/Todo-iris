@@ -16,11 +16,11 @@ class HomeScreen extends StatelessWidget {
               builder: (BuildContext context, TodoState state) {
                return  Container(
                  height:800,
-                 child: ListView.builder(
+                 child: state.todolists.length>0?ListView.builder(
                       itemBuilder: (context, index) {
                         return ToDoCard(state.todolists[index]);
                       },
-                      itemCount: state.todolists.length),
+                      itemCount: state.todolists.length):Container(child: Center(child: Text('Be Yourself Everyone Else is Already Taken'))),
                );
               }),
         floatingActionButton: 

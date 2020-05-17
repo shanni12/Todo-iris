@@ -33,15 +33,18 @@ class MainDrawer extends StatelessWidget {
               'To Do!',
               style: TextStyle(
                 fontWeight: FontWeight.w900,
-                fontSize: 20,
+                fontSize: 25,
                 
               ),
             ),
           ),
           SizedBox(height: 20),
-          buildListTile(Icons.check, 'Home',() {Navigator.of(context).pushReplacementNamed('/');}),
-          buildListTile(Icons.check,'Completed',() {Navigator.of(context).pushReplacementNamed('/completed');}),
-          buildListTile(Icons.check,'In Completed',() {Navigator.of(context).pushReplacementNamed('/incomplete');})
+          buildListTile(Icons.home, 'All',() {Navigator.of(context).pushReplacementNamed('/');}),
+
+          buildListTile(Icons.done_all,'Completed',() {Navigator.of(context).pushReplacementNamed('/completed');}),
+          buildListTile(Icons.work,'Incomplete',() {Navigator.of(context).pushReplacementNamed('/incomplete');}),
+          buildListTile(Icons.calendar_today,'Calendar-View',() {Navigator.of(context).pushReplacementNamed('/calendar_view');})
+
         ],
       ),
     );

@@ -31,7 +31,7 @@ class _NewToDoState extends State<NewToDo> {
   }
 
   void _submitToDo() {
-    if (titleController.text == null) {
+    if (titleController.text.isEmpty) {
       return;
     }
     BlocProvider.of<TodoBloc>(context).add(AddTodo(titleController.text,descriptionController.text,_selectedDate));

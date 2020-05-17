@@ -16,11 +16,11 @@ class CompleteScreen extends StatelessWidget {
        BlocBuilder(
               bloc:todoBloc ,
               builder: (BuildContext context, TodoState state) {
-               return  ListView.builder(
+               return  todoBloc.completed().length>0?ListView.builder(
                     itemBuilder: (context, index) {
                       return ToDoCard(todoBloc.completed()[index]);
                     },
-                    itemCount: todoBloc.completed().length);
+                    itemCount: todoBloc.completed().length):Container(child: Center(child: Text('No Completed Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold))));
               }),
        
         );

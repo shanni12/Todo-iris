@@ -16,11 +16,11 @@ class InCompleteScreen extends StatelessWidget {
        BlocBuilder(
               bloc:todoBloc ,
               builder: (BuildContext context, TodoState state) {
-               return  ListView.builder(
+               return todoBloc.incomplete().length>0? ListView.builder(
                     itemBuilder: (context, index) {
                       return ToDoCard(todoBloc.incomplete()[index]);
                     },
-                    itemCount: todoBloc.incomplete().length);
+                    itemCount: todoBloc.incomplete().length):Container(child: Center(child: Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold))));
               }),
        
         );

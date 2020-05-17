@@ -34,9 +34,11 @@ class _EditToDoState extends State<EditToDo> {
   }
 
   void _submitToDo() {
-    if (titleController.text == null) {
+    if (titleController.text .isEmpty) {
+      print('***');
       return;
     }
+    print('#');
     BlocProvider.of<TodoBloc>(context).add(EditTodoItem(widget.id,titleController.text,descriptionController.text,_selectedDate));
      Navigator.of(context).pop();
   }

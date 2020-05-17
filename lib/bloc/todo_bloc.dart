@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:ToDo_bloc/models/todo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import './todo_state.dart';
 import './todo_event.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
@@ -13,14 +14,25 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     return state.todolists.firstWhere((element) => element.id == id);
   }
 
-  List<TodoList> completed() {
+  List<dynamic> completed() {
     return state.todolists.where((element) => element.isCompleted).toList();
   }
 
-  List<TodoList> incomplete() {
+  List<dynamic> incomplete() {
     return state.todolists.where((element) => !(element.isCompleted)).toList();
   }
-
+  List<dynamic> getincomplete(DateTime date){
+    var formatter=new DateFormat('yyyy-MM-dd');
+    return state.todolists.where((element) =>(formatter.format(element.date)==formatter.format(date)&&(!element.isCompleted))).toList();
+  }
+  List<dynamic> getall(DateTime date){
+    var formatter=new DateFormat('yyyy-MM-dd');
+    return state.todolists.where((element) =>(formatter.format(element.date)==formatter.format(date))).toList();
+  }
+  List<dynamic> getcompleted(DateTime date){
+    var formatter=new DateFormat('yyyy-MM-dd');
+    return state.todolists.where((element) =>(formatter.format(element.date)==formatter.format(date)&&(element.isCompleted))).toList();
+  }
   @override
   Stream<TodoState> mapEventToState(
     TodoEvent event,
@@ -58,8 +70,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       var todoObject=todolistBox.values.toList()[index];
       
       todoObject.isFavourite = !todoObject.isFavourite;
-      state.todolists=todolistBox.values.toList();
-      yield (TodoState(state.todolists));
+      todolistBox.putAt(index,todoObject);
+      yield (TodoState(todolistBox.values.toList()));
     } 
     
     else if (event is ToggleComplete) {
@@ -69,9 +81,10 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       var todoObject=todolistBox.values.toList()[index];
       todoObject.isCompleted = !todoObject.isCompleted; 
       
-      state.todolists=todolistBox.values.toList();
+      
+      todolistBox.putAt(index,todoObject);
      
-      yield (TodoState(state.todolists));
+      yield (TodoState(todolistBox.values.toList()));
     }
     
     else if (event is EditTodoItem) {
@@ -84,7 +97,9 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       todoObject.title=event.title;
       todoObject.description=event.description;
       todoObject.date=event.date;
-      state.todolists=todolistBox.values.toList();
+      
+      todolistBox.putAt(index, todoObject);
+      //state.todolists=todolistBox.values.toList();
       print(todolistBox.values.toList()[index].title);
       yield (TodoState(todolistBox.values.toList()));
     }
