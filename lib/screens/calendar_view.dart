@@ -24,9 +24,9 @@ class CalendarViewState extends State<CalendarView> {
   var availableCalendarFormats={CalendarFormat.week};
   @override
   Widget build(BuildContext context) {
-    print(selected_date);
+  
     final todoBloc=BlocProvider.of<TodoBloc>(context);
-    print(todoBloc.getall(selected_date).length);
+    
     return BlocBuilder(bloc:todoBloc,builder: (BuildContext context,TodoState state) { return SafeArea(
           child: Scaffold(
         appBar: AppBar(title: Text('Todo!')),

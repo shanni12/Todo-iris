@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import '../bloc/todo_state.dart';
-
 class ToDoView extends StatelessWidget {
   static const routeName = '/todoView';
 
@@ -100,6 +99,8 @@ class ToDoView extends StatelessWidget {
                                 Text('Finish By: ' +
                                     DateFormat.yMMMd()
                                         .format((todoObject.date))),
+                                SizedBox(height:4),
+                                
                               ],
                             )),
 

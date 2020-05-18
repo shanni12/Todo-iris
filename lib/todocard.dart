@@ -19,8 +19,8 @@ class _ToDoCardState extends State<ToDoCard> {
   
   @override
   Widget build(BuildContext context) {
-    print(widget.todoObject.isFavourite);
-    return Container(
+  
+        return Container(
       margin:EdgeInsets.only(top: 10.0),
       
       child: Dismissible(

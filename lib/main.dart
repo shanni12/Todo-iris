@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     return  BlocProvider.value(
             value:TodoBloc(),
             child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'To Do',
           theme: ThemeData(
             
             primarySwatch: Colors.purple,

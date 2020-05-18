@@ -18,15 +18,15 @@ class _EditToDoState extends State<EditToDo> {
     showDatePicker(
             context: context,
             initialDate: DateTime.now().add(Duration(days: 1)),
-            firstDate: DateTime(2019),
+            firstDate: DateTime.now(),
             lastDate: DateTime.now().add(Duration(days: 365)))
         .then((pickedDate) {
       if (pickedDate == null) {
-        print('null');
+      
         return;
       }
       setState(() {
-        print('picked');
+        
         flag=1;
         _selectedDate = pickedDate;
       });
@@ -35,10 +35,10 @@ class _EditToDoState extends State<EditToDo> {
 
   void _submitToDo() {
     if (titleController.text .isEmpty) {
-      print('***');
+      
       return;
     }
-    print('#');
+    
     BlocProvider.of<TodoBloc>(context).add(EditTodoItem(widget.id,titleController.text,descriptionController.text,_selectedDate));
      Navigator.of(context).pop();
   }
@@ -56,7 +56,7 @@ class _EditToDoState extends State<EditToDo> {
     return SafeArea(
           child: Scaffold(
         appBar: AppBar(
-          title: Text('New ToDo'),
+          title: Text('Edit ToDo'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),

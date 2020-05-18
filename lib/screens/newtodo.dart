@@ -16,15 +16,15 @@ class _NewToDoState extends State<NewToDo> {
     showDatePicker(
             context: context,
             initialDate: DateTime.now().add(Duration(days: 1)),
-            firstDate: DateTime(2019),
+            firstDate: DateTime.now(),
             lastDate: DateTime.now().add(Duration(days: 365)))
         .then((pickedDate) {
       if (pickedDate == null) {
-        print('null');
+        
         return;
       }
       setState(() {
-        print('picked');
+        
         _selectedDate = pickedDate;
       });
     });

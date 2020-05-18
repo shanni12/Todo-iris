@@ -46,8 +46,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
           description: event.description,
           date: event.date));
       state.todolists=todolistsBox.values.toList();
-      print(todolistsBox.values.toList()[0].id);
-      print(state.todolists);
+      
+      
       yield (TodoState(state.todolists));
     }
     
@@ -56,7 +56,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
        var values=todolistsBox.values.toList();
       final index=values.indexWhere((element) => element.id==event.id);
       todolistsBox.deleteAt(index);
-      print(todolistsBox.values);
+      
       state.todolists=todolistsBox.values.toList();
       //state.todolists.removeWhere((element) => element.id == event.id);
       yield (TodoState(state.todolists));
@@ -100,7 +100,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       
       todolistBox.putAt(index, todoObject);
       //state.todolists=todolistBox.values.toList();
-      print(todolistBox.values.toList()[index].title);
+    
       yield (TodoState(todolistBox.values.toList()));
     }
   }
