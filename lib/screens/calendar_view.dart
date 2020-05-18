@@ -82,7 +82,7 @@ class CalendarViewState extends State<CalendarView> {
         
       ),floatingActionButton: 
                     
-                     FloatingActionButton(
+                     FloatingActionButton(key: Key('addtodo'),
             onPressed: () {Navigator.of(context).pushNamed('/newtodo');},
             backgroundColor: Theme.of(context).primaryColor,
             child: Icon(Icons.add,color:Colors.white),)),

@@ -2,7 +2,7 @@ import 'package:ToDo_bloc/bloc/todo_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../bloc/todo_event.dart';
+import 'package:ToDo_bloc/bloc/todo_event.dart';
 class NewToDo extends StatefulWidget {
 static const routeName='/newtodo';
   _NewToDoState createState() => _NewToDoState();
@@ -15,7 +15,7 @@ class _NewToDoState extends State<NewToDo> {
   void _presentDatePicker() {
     showDatePicker(
             context: context,
-            initialDate: DateTime.now().add(Duration(days: 1)),
+            initialDate: DateTime.now(),
             firstDate: DateTime.now(),
             lastDate: DateTime.now().add(Duration(days: 365)))
         .then((pickedDate) {
@@ -48,13 +48,13 @@ class _NewToDoState extends State<NewToDo> {
     padding: const EdgeInsets.all(10.0),
     child: Column(
       children: <Widget>[
-        TextField(
+        TextField(key:Key('title'),
           controller: titleController,
           decoration: InputDecoration(
             labelText: 'Title',
           ),
         ),
-        TextField(
+        TextField(key:Key('description'),
           controller: descriptionController,
           keyboardType: TextInputType.multiline,
           maxLines: 4,
@@ -75,7 +75,7 @@ class _NewToDoState extends State<NewToDo> {
             Container(
               margin: EdgeInsets.only(top: 8),
               color: Theme.of(context).primaryColor,
-              child: FlatButton(
+              child: FlatButton(key:Key('date'),
                 child: Text(
                   'Choose Date',
                   style: TextStyle(
@@ -92,7 +92,7 @@ class _NewToDoState extends State<NewToDo> {
             width: double.infinity,
             color: Theme.of(context).primaryColor,
             child:
-                FlatButton(onPressed: _submitToDo, child: Text('submit'))),
+                FlatButton(key:Key('submit'),onPressed: _submitToDo, child: Text('submit'))),
       ],
     ),
         ),

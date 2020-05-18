@@ -1,10 +1,10 @@
 import 'package:ToDo_bloc/bloc/todo_bloc.dart';
 import 'package:ToDo_bloc/screens/edit_screen.dart';
-import '../bloc/todo_event.dart';
+import 'package:ToDo_bloc/bloc/todo_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../bloc/todo_state.dart';
+import 'package:ToDo_bloc/bloc/todo_state.dart';
 class ToDoView extends StatelessWidget {
   static const routeName = '/todoView';
 
