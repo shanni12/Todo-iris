@@ -7,7 +7,7 @@ import 'package:ToDo_bloc/screens/complete_screen.dart';
 import 'package:ToDo_bloc/screens/incomplete_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart' ;
+import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import './screens/home_screen.dart';
 import './screens/newtodo.dart';
@@ -15,11 +15,12 @@ import './screens/todoView.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final appDocumentDirectory= await path_provider.getApplicationDocumentsDirectory();
-   Hive.init(appDocumentDirectory.path);
-   Hive.registerAdapter(TodoListAdapter());
-  
-  final todolistsBox=await Hive.openBox('todolist');
+  final appDocumentDirectory =
+      await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  Hive.registerAdapter(TodoListAdapter());
+
+  final todolistsBox = await Hive.openBox('todolist');
   runApp(MyApp());
 }
 
@@ -32,30 +33,31 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider.value(
-            value:TodoBloc(),
-            child: MaterialApp(
-          title: 'To Do',
-          theme: ThemeData(
-            
-            primarySwatch: Colors.purple,
-            
-          ),
-          darkTheme: ThemeData(brightness:Brightness.dark),
-          initialRoute: '/calendar_view',
-          routes:{
-            '/calendar_view':(ctx)=>CalendarView(),
-            '/': (ctx)=>HomeScreen(),NewToDo.routeName:(ctx)=>NewToDo(),ToDoView.routeName:(ctx)=>ToDoView(),CompleteScreen.routeName:(ctx)=>CompleteScreen(),
-            InCompleteScreen.routeName:(ctx)=>InCompleteScreen(),'/about_screen': (ctx)=>About()
-          },
-          onGenerateRoute:RouteGenerator.generateRoute ,
+    return BlocProvider.value(
+      value: TodoBloc(),
+      child: MaterialApp(
+        title: 'To Do',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
         ),
-      
+        darkTheme: ThemeData(brightness: Brightness.dark),
+        initialRoute: '/calendar_view',
+        routes: {
+          '/calendar_view': (ctx) => CalendarView(),
+          '/': (ctx) => HomeScreen(),
+          NewToDo.routeName: (ctx) => NewToDo(),
+          ToDoView.routeName: (ctx) => ToDoView(),
+          CompleteScreen.routeName: (ctx) => CompleteScreen(),
+          InCompleteScreen.routeName: (ctx) => InCompleteScreen(),
+          '/about_screen': (ctx) => About()
+        },
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
-  void dispose(){
+
+  void dispose() {
     Hive.close();
     super.dispose();
   }
 }
-
