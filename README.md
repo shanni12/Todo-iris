@@ -1,16 +1,34 @@
-# ToDo_bloc
+# ToDo App
 
-A new Flutter project.
+This App lets you keep track of all tasks and prioritize on what is important
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Installing the dependencies
+    flutter pub get 
 
-A few resources to get you started if this is your first Flutter project:
+## Run the App
+   flutter run
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image2.jpeg" alt="drawing" width="500" height="800" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image3.jpeg" alt="drawing" width="500" height="800" />
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image4.jpeg" alt="drawing" width="500" height="800" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image5.jpeg" alt="drawing" width="500" height="800" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image6.jpeg" alt="drawing" width="500" height="800" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img src="https://github.com/shanni12/Todo-iris/blob/master/todo-screenshots/image1.jpeg" alt="drawing" width="500" height="800" />
