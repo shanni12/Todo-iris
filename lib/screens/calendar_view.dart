@@ -62,6 +62,7 @@ class CalendarViewState extends State<CalendarView> {
                  )),
               ):Column(mainAxisAlignment: MainAxisAlignment.center,
                  children: [
+                   SizedBox(height:50),
                    Text('No Pending Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
                    
                  ],
@@ -69,12 +70,18 @@ class CalendarViewState extends State<CalendarView> {
                 child: ListView.builder(itemBuilder: (context,index) {return ToDoCard(todoBloc.getcompleted(selected_date)[index]);},
                 itemCount:todoBloc.getcompleted(selected_date).length ,)):Column(
                  children: [
+                   SizedBox(height:50),
                    Text('No Completed Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
                    
                  ])
                ),]
           ): 
-                    Container(child: Center(child: Text('No Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)))),
+                    Container(child: Center(child: Column(
+                      children: <Widget>[
+                        SizedBox(height:75),
+                        Text('No Tasks',style:TextStyle(fontSize:20.0,fontWeight:FontWeight.bold)),
+                      ],
+                    ))),
                     ],
                   
           ),

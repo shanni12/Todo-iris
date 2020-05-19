@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         ),
         darkTheme: ThemeData(brightness: Brightness.dark),
         initialRoute: '/calendar_view',
-        routes: {
+        routes: { 
           '/calendar_view': (ctx) => CalendarView(),
           '/': (ctx) => HomeScreen(),
           NewToDo.routeName: (ctx) => NewToDo(),

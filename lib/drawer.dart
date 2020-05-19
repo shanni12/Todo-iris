@@ -39,7 +39,7 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          buildListTile(Icons.home, 'All',() {Navigator.of(context).pushReplacementNamed('/');}),
+          buildListTile(Icons.home, 'All Tasks',() {Navigator.of(context).pushReplacementNamed('/');}),
 
           buildListTile(Icons.done_all,'Completed',() {Navigator.of(context).pushReplacementNamed('/completed');}),
           buildListTile(Icons.work,'Incomplete',() {Navigator.of(context).pushReplacementNamed('/incomplete');}),

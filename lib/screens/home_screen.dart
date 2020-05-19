@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
           child: Scaffold(
-          appBar: AppBar(title: Text('To-do-lists')),
+          appBar: AppBar(title: Text('All Tasks')),
           drawer: MainDrawer(),
           body:
          BlocBuilder(
